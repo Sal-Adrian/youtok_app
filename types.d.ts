@@ -1,6 +1,6 @@
 export interface Video {
   _id: string;
-  cpation: string;
+  caption: string;
   comments: {
     _key: string;
     comment: string;
