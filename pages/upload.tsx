@@ -8,7 +8,7 @@ import { SanityAssetDocument } from '@sanity/client';
 import useAuthStore from '../store/authStore';
 import { client } from '../utils/client';
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { BASE_URL } from '../utils';
 
 const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);

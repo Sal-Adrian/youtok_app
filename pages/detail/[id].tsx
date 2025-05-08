@@ -14,7 +14,7 @@ import useAuthStore from '../../store/authStore';
 import LikeButton from '../../components/LikeButton';
 import Comments from '../../components/Comments';
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { BASE_URL } from '../../utils';
 
 interface IProps {
   postDetails: Video,
