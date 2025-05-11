@@ -4,15 +4,19 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import GoogleLogin from 'react-google-login';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
+import { FaUser } from "react-icons/fa";
 import { ImCancelCircle } from 'react-icons/im';
 import Discover from './Discover';
 import Footer from './Footer';
 import SuggestedAccounts from './SuggestedAccounts';
 
+import { BASE_URL } from '../utils';
+import useAuthStore from '../store/authStore';
+
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
 
-  const userProfile = false;
+  const { userProfile }: any = useAuthStore();
 
   const normalLink = `flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start 
   cursor-pointer font-semibold text-[#F51997] rounded`;
@@ -32,6 +36,18 @@ const Sidebar = () => {
                 </p>
                 <span className="text-xl hidden xl:block">
                   For You
+                </span>
+              </div>
+            </Link>
+          </div>
+          <div className="xl:border-b-2 border-gray-200 xl:pb-4 mt-3">
+            <Link href={`/profile/${userProfile._id}`}>
+              <div className={normalLink}>
+                <p className="text-2xl">
+                  <FaUser />
+                </p>
+                <span className="text-xl hidden xl:block">
+                  Your Profile
                 </span>
               </div>
             </Link>
