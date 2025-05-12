@@ -20,7 +20,7 @@ const Footer = () => {
           <a href="https://github.com/Sal-Adrian/youtok_app">About</a></p>
         <p key="AboutMe" className="text-gray-400 text-sm hover:underline cursor-pointer">
           <a href="https://sal-adrian.github.io/">About Me</a></p>
-        <p key="AboutMe" className="text-gray-400 text-sm hover:underline cursor-pointer">
+        <p key="GitHub" className="text-gray-400 text-sm hover:underline cursor-pointer">
           <a href="https://github.com/Sal-Adrian">Github</a></p>
       </div>
       <List items={footerList2} />
