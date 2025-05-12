@@ -76,7 +76,7 @@ const Profile = ({ data }: IProps) => {
   )
 }
 
-export const getSeverSideProps = async ({ 
+export const getServerSideProps = async ({ 
   params: { id }
 } : { 
   params: { id: string } 
