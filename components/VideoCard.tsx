@@ -1,44 +1,84 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NextPage } from 'next';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
-import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
-import { BsPlay, BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
-import { GoVerified } from 'react-icons/go';
+// import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
+// import { BsPlay, BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
+import { FaComments } from "react-icons/fa";
+// import { GoVerified } from 'react-icons/go';
+import axios from 'axios';
 
-import { Video } from '../types';
-
+import { Video, YTVideo } from '../types';
+import useAuthStore from '../store/authStore';
+import { BASE_URL } from '../utils';
+import LikeButton from './LikeButton';
 
 interface IProps {
-  post: Video;
+  post: YTVideo;
 }
 
 const VideoCard: NextPage<IProps> = ({ post }) => {
-  const [isHover, setIsHover] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const [isVideoMuted, setIsVideoMuted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // OLD VIDEO CARD
+  // const [isHover, setIsHover] = useState(false);
+  // const [playing, setPlaying] = useState(false);
+  // const [isVideoMuted, setIsVideoMuted] = useState(false);
+  // const videoRef = useRef<HTMLVideoElement>(null);
   
-  const onVideoPress = () => {
-    if(playing) {
-      videoRef.current?.pause();
-      setPlaying(false);
-    } else {
-      videoRef.current?.play();
-      setPlaying(true)
+  // const onVideoPress = () => {
+  //   if(playing) {
+  //     videoRef.current?.pause();
+  //     setPlaying(false);
+  //   } else {
+  //     videoRef.current?.play();
+  //     setPlaying(true)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if(videoRef?.current) {
+  //     videoRef.current.muted = isVideoMuted;
+  //   }
+  // }, [isVideoMuted]);
+
+  const [postData, setPostData] = useState(post);
+  const { userProfile }: any = useAuthStore();
+
+  const handleLike = async (like: boolean) => {
+    if(userProfile) {
+      const {data} = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: postData.etag,
+        like
+      });
+
+      setPostData({ ...postData, likes: data.likes });
     }
   }
 
-  useEffect(() => {
-    if(videoRef?.current) {
-      videoRef.current.muted = isVideoMuted;
-    }
-  }, [isVideoMuted]);
-
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
+
+      <iframe className="lg:w-[600px] lg:h-[338px] h-[169px] w-[300px] rounded-2xl bg-gray-100"
+        src={`https://www.youtube.com/embed/${postData.etag}`}>
+      </iframe>
+
+      <div className="flex items-center justify-between lg:w-[600px] w-[300px]">
+        {userProfile && (
+          <LikeButton 
+            likes={postData.likes}
+            handleLike={() => {handleLike(true)}}
+            handleDislike={() => {handleLike(false)}}
+          />
+        )}
+        <div className="text-lg md:text-2xl mt-2 p-2 md:p-4 flex-wrap cursor-pointer">
+          <Link href={`/detail/${postData.etag}`}>
+            <FaComments />
+          </Link>
+        </div>
+      </div>
+      {/* OLD VIDEO CARD */}
       {/* Posted By Username & Pic */}
-      <div>
+      {/* <div>
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
@@ -66,9 +106,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* Video Player */}
-      <div className="lg:ml-20 flex gap-4 relative mb-5">
+      {/* <div className="lg:ml-20 flex gap-4 relative mb-5">
         <div 
           onMouseEnter={() => setIsHover(true)} 
           onMouseLeave={() => setIsHover(false)} 
@@ -104,7 +144,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

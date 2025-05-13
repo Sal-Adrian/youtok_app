@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import axios from 'axios';
 
 import { Video, YTVideo } from '../types';
@@ -6,37 +6,23 @@ import VideoCard from '../components/VideoCard';
 import NoResults from '../components/NoResults';
 import { YOUTUBE_URL } from '../utils';
 
+
 interface IProps {
-  videos: Video[]
+  videos: YTVideo[]
 }
 
-const Home = () => {
-  const ytVideos: YTVideo[] = [];
-  (async () => {
-    const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
-    // console.log(res.items);
-    res.items.map((vid: YTVideo) => {ytVideos.push(vid)})
-  })();
-  console.log(ytVideos)
+const Home = ({ videos }: IProps) => {
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="flex flex-col gap-10 videos h-full">
-      {ytVideos.map((vid: YTVideo) => <p>{vid.etag}</p>)}
-      {ytVideos.length ? (
-        ytVideos.map((vid: YTVideo) => (
-          <NoResults text={'No Videos'} />
-          // <VideoCard post={vid} key={vid.id.videoId} />
+      {videos.length ? (
+        videos.map((video: YTVideo) => (
+          <VideoCard post={video} key={video.etag} />
         ))
       ) : (
         <NoResults text={'No Videos'} />
-      )} 
-      {/* {videos.length ? (
-        videos.map((video: Video) => (
-          <VideoCard post={video} key={video._id} />
-        ))
-      ) : (
-        <NoResults text={'No Videos'} />
-      )} */}
+      )}
     </div>
   );
 };
@@ -44,7 +30,47 @@ const Home = () => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/post');
+  // const { data } = await axios.get('http://localhost:3000/api/post');
+
+  const data: YTVideo[] = [];
+  // const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
+  // res.items.map((vid: YTVideo) => {data.push(vid)});
+  
+  data.push({
+    etag: 'NPtGkmkq1P0',
+    id: {
+      kind: 'string;',
+      videoId: 'string;',
+    },
+    kind: 'string;',
+    snippet: {
+      channelId: 'string;',
+      channelTitle: 'UTS',
+      description: 'string;',
+      liveBroadcastContent: 'string;',
+      publishTime: 'string;',
+      publishedAt: 'string;',
+      thumbnails: {
+        default: {
+          height: 100,
+          url: 'string;',
+          width: 100,
+        },
+        high: {
+          height: 100,
+          url: 'string;',
+          width: 100,
+        },
+        medium: {
+          height: 100,
+          url: 'string;',
+          width: 100,
+        },
+      },
+      title: 'Hold Your Horses',
+    },
+    likes: []
+  });
 
   return {
     props: {
