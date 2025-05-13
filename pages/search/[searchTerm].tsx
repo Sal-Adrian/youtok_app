@@ -7,11 +7,11 @@ import { useRouter } from 'next/router';
 
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
-import { IUser, Video } from '../../types';
+import { IUser, YTVideo } from '../../types';
 import { BASE_URL } from '../../utils';
 import useAuthStore from '../../store/authStore';
 
-const Search = ({ videos }: { videos: Video[] }) => {
+const Search = ({ videos }: { videos: YTVideo[] }) => {
   console.log(videos)
   const [isAccounts, setIsAccounts] = useState(false);
 
@@ -61,7 +61,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
         </div>
         ) : <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start">
           {videos.length ? (
-            videos.map((video: Video, idx: number) => (
+            videos.map((video: YTVideo, idx: number) => (
               <VideoCard post={video} key={idx}/>
             ))
           ) : <NoResults text={`No video results for ${searchTerm}`} />}

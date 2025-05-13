@@ -5,20 +5,20 @@ import axios from 'axios';
 
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
-import { IUser, Video } from '../../types';
+import { IUser, YTVideo } from '../../types';
 import { BASE_URL } from '../../utils';
 
 interface IProps {
   data: {
     user: IUser,
-    userVideos: Video[],
-    userLikedVideos: Video[]
+    userVideos: YTVideo[],
+    userLikedVideos: YTVideo[]
   }
 }
 
 const Profile = ({ data }: IProps) => {
   const [showUserVideos, setShowUserVideos] = useState(true);
-  const [videosList, setVideosList] = useState<Video[]>([])
+  const [videosList, setVideosList] = useState<YTVideo[]>([])
 
   const { user, userVideos, userLikedVideos } = data;
 
@@ -66,7 +66,7 @@ const Profile = ({ data }: IProps) => {
         </div>
         <div className="flex gap-6 flex-wrap md:justify-start">
           {videosList.length > 0 ? 
-            videosList.map((post: Video, idx: number) => (
+            videosList.map((post: YTVideo, idx: number) => (
               <VideoCard post={post} key={idx}/>
             ))
            : <NoResults text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}/>}
