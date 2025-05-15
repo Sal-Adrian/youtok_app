@@ -18,7 +18,7 @@ const Home = ({ videos }: IProps) => {
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
         videos.map((video: YTVideo) => (
-          <VideoCard post={video} key={video.etag} />
+          <VideoCard post={video} key={video.id.videoId} />
         ))
       ) : (
         <NoResults text={'No Videos'} />
@@ -34,13 +34,13 @@ export const getServerSideProps = async () => {
 
   const data: YTVideo[] = [];
   // const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
-  // res.items.map((vid: YTVideo) => {data.push(vid)});
+  // res.items.map((vid: YTVideo) => {data.push(vid); console.log(vid)});
   
   data.push({
-    etag: 'NPtGkmkq1P0',
+    etag: 'string',
     id: {
       kind: 'string;',
-      videoId: 'string;',
+      videoId: 'NPtGkmkq1P0',
     },
     kind: 'string;',
     snippet: {

@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
 import { IUser, YTVideo } from '../../types';
-import { BASE_URL } from '../../utils';
+import { BASE_URL, YOUTUBE_URL } from '../../utils';
 import useAuthStore from '../../store/authStore';
 
 const Search = ({ videos }: { videos: YTVideo[] }) => {
