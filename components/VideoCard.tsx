@@ -48,6 +48,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
       const {data} = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: postData.etag,
+        postTitle: postData.snippet.title,
         like
       });
 

@@ -30,21 +30,10 @@ export const allPostsQuery = () => {
 };
 
 export const postDetailQuery = (postId: string | string[] | undefined) => {
-  const query = `*[_type == "post" && _id == '${postId}']{
+  const query = `*[_type == "post" && video == '${postId}']{
     _id,
      caption,
-       video{
-        asset->{
-          _id,
-          url
-        }
-      },
-      userId,
-    postedBy->{
-      _id,
-      userName,
-      image
-    },
+      video,
      likes,
     comments[]{
       comment,
@@ -55,6 +44,31 @@ export const postDetailQuery = (postId: string | string[] | undefined) => {
     },
     }
   }`;
+  // `*[_type == "post" && _id == '${postId}']{
+  //   _id,
+  //    caption,
+  //      video{
+  //       asset->{
+  //         _id,
+  //         url
+  //       }
+  //     },
+  //     userId,
+  //   postedBy->{
+  //     _id,
+  //     userName,
+  //     image
+  //   },
+  //    likes,
+  //   comments[]{
+  //     comment,
+  //     _key,
+  //     postedBy->{
+  //       _ref,
+  //     _id,
+  //   },
+  //   }
+  // }`;
   return query;
 };
 

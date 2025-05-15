@@ -1,6 +1,7 @@
 export interface Video {
   _id: string;
   caption: string;
+  video: string;
   comments: {
     _key: string;
     comment: string;
@@ -15,18 +16,18 @@ export interface Video {
       userName: string;
     };
   }[];
-  postedBy: {
-    _id: string;
-    image: string;
-    userName: string;
-  };
-  video: {
-    asset: {
-      _id: string;
-      url: string;
-    };
-  };
-  userId: string;
+  // postedBy: {
+  //   _id: string;
+  //   image: string;
+  //   userName: string;
+  // };
+  // video: {
+  //   asset: {
+  //     _id: string;
+  //     url: string;
+  //   };
+  // };
+  // userId: string;
 }
 
 export interface IUser {

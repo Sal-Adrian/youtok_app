@@ -87,14 +87,14 @@ const Detail = ({ postDetails }: IProps) => {
         </div>
         <div className="relative">
           <div className="lg:w-[800px] lg:h-[452px] h-[169px] w-[300px]">
-            <video 
+            {/* <video 
               ref={videoRef}
               loop
               onClick={onVideoClick}
               src={post.video.asset.url}
               className="h-full cursor-pointer"
             >
-            </video>
+            </video> */}
           </div>
           <div className="absolute top-[45%] left-[45%] cursor-pointer">
             {!playing && (
@@ -120,7 +120,7 @@ const Detail = ({ postDetails }: IProps) => {
         <div className="lg:mt-2 mt-10">
           <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
             <div className="ml-4 md:w-20 md:h-20 w-16 h-16">
-              <Link href={`/profile/${post.postedBy._id}`}>
+              {/* <Link href={`/profile/${post.postedBy._id}`}>
                 <>
                   <Image 
                     width={62} 
@@ -131,10 +131,10 @@ const Detail = ({ postDetails }: IProps) => {
                     layout="responsive"
                   />
                 </>
-              </Link>
+              </Link> */}
             </div>
             <div>
-              <Link href={`/profile/${post.postedBy._id}`}>
+              {/* <Link href={`/profile/${post.postedBy._id}`}>
                 <div className="mt-3 flex flex-col gap-2">
                   <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                     {post.postedBy.userName} {` `}
@@ -142,7 +142,7 @@ const Detail = ({ postDetails }: IProps) => {
                   </p>
                   <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">{post.postedBy.userName}</p>
                 </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>

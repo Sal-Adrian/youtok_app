@@ -12,20 +12,8 @@ export const postType = defineType({
     }),
     defineField({
       name: 'video',
-      type: 'file',
-      validation: (rule) => rule.required(),
-      // options: {
-      // hotspot: true,
-      // },
-    }),
-    defineField({
-      name: 'userId',
       type: 'string',
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'postedBy',
-      type: 'postedBy',
     }),
     defineField({
       name: 'likes',
@@ -42,9 +30,23 @@ export const postType = defineType({
       type: 'array',
       of: [{ type: 'comment' }],
     }),
-    defineField({
-      name: 'topic',
-      type: 'string',
-    }),
+    // defineField({
+    //   name: 'video',
+    //   type: 'file',
+    //   validation: (rule) => rule.required(),
+    // }),
+    // defineField({
+    //   name: 'userId',
+    //   type: 'string',
+    //   validation: (rule) => rule.required(),
+    // }),
+    // defineField({
+    //   name: 'postedBy',
+    //   type: 'postedBy',
+    // }),
+    // defineField({
+    //   name: 'topic',
+    //   type: 'string',
+    // }),
   ],
 })
