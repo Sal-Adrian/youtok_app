@@ -7,11 +7,13 @@ import Link from 'next/link';
 import { FaComments } from "react-icons/fa";
 // import { GoVerified } from 'react-icons/go';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { Video, YTVideo } from '../types';
 import useAuthStore from '../store/authStore';
 import { BASE_URL } from '../utils';
 import LikeButton from './LikeButton';
+
 
 interface IProps {
   post: YTVideo;
@@ -43,6 +45,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
   const [postData, setPostData] = useState(post);
   const { userProfile }: any = useAuthStore();
 
+  const router = useRouter();
+
   const handleLike = async (like: boolean) => {
     if(userProfile) {
       const {data} = await axios.put(`${BASE_URL}/api/like`, {
@@ -55,6 +59,16 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
       setPostData({ ...postData, likes: data.likes });
     }
   }
+
+  const handleComment = async () => {
+    const likes: any[] = postData.likes;
+    const filterLikes = likes?.filter((item) => item._ref === userProfile?._id);
+    if(filterLikes?.length < 1){
+      await handleLike(true);
+    }
+    
+    router.push(`/detail/${postData.etag}`);
+  };
 
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
@@ -71,10 +85,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             handleDislike={() => {handleLike(false)}}
           />
         )}
-        <div className="text-lg md:text-2xl mt-2 p-2 md:p-4 flex-wrap cursor-pointer">
-          <Link href={`/detail/${postData.etag}`}>
-            <FaComments />
-          </Link>
+        <div className="text-lg md:text-2xl mt-2 p-2 md:p-4 flex-wrap">
+          <FaComments className="cursor-pointer" onClick={handleComment}/>
         </div>
       </div>
       {/* OLD VIDEO CARD */}

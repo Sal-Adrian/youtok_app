@@ -27,7 +27,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]">
-      <div className="overflow-scroll h-[400px] lg:h-[375px]">
+      <div className="overflow-scroll h-[420px]">
         {comments?.length ? (
           comments.map((item, idx) => (
             <>

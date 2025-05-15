@@ -16,8 +16,10 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     const { comment, userId } = req.body;
     const { id }: any = req.query;
 
+    let videoQuery = await client.fetch(postDetailQuery(id));
+
     const data = await client
-      .patch(id)
+      .patch(videoQuery[0]._id)
       .setIfMissing({ comments: [] })
       .insert('after', 'comments[-1]', [
         {

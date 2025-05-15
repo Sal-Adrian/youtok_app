@@ -21,7 +21,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     const { userId, postId, postTitle, like } = req.body;
 
     let videoQuery = await client.fetch(postDetailQuery(postId));
-    if(videoQuery.length == 0){
+    if(videoQuery.length < 1){
       await handleNewPost(postId, postTitle);
       videoQuery = await client.fetch(postDetailQuery(postId));
     }
@@ -42,7 +42,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
       .unset([`likes[_ref=="${userId}"]`])
       .commit();
 
-      if (!like && videoQuery[0].likes.length == 1){
+      if (!like && videoQuery[0].likes.length == 1 && !videoQuery[0].comments){
         await client.delete(videoQuery[0]._id)
       }
     
