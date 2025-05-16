@@ -52,7 +52,7 @@ const Upload = () => {
     const videoData = res.items[0];
 
     if(res.items.length > 0){
-      let videoQuery = await client.fetch(postDetailQuery(videoId));
+      const videoQuery = await client.fetch(postDetailQuery(videoId));
 
       if(videoQuery.length > 0){
         const likes: any[] = videoQuery[0].likes;

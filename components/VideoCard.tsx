@@ -16,7 +16,7 @@ import LikeButton from './LikeButton';
 
 
 interface IProps {
-  post: YTVideo;
+  post: Video;
 }
 
 const VideoCard: NextPage<IProps> = ({ post }) => {
@@ -51,8 +51,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     if(userProfile) {
       const {data} = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
-        postId: postData.id.videoId,
-        postTitle: postData.snippet.title,
+        postId: postData.video,
+        postTitle: postData.caption,
         like
       });
 
@@ -67,14 +67,14 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
       await handleLike(true);
     }
     
-    router.push(`/detail/${postData.id.videoId}`);
+    router.push(`/detail/${postData.video}`);
   };
 
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
 
       <iframe className="lg:w-[600px] lg:h-[338px] h-[169px] w-[300px] rounded-2xl bg-gray-100"
-        src={`https://www.youtube.com/embed/${postData.id.videoId}`}>
+        src={`https://www.youtube.com/embed/${postData.video}`}>
       </iframe>
 
       <div className="flex items-center justify-between lg:w-[600px] w-[300px]">

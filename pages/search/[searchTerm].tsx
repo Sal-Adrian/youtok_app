@@ -7,16 +7,18 @@
 
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
-import { IUser, YTVideo } from '../../types';
+import { IUser, Video, YTVideo } from '../../types';
 import { BASE_URL, YOUTUBE_URL } from '../../utils';
+import { client } from '../../utils/client';
+import { postDetailQuery } from '../../utils/queries';
 // import useAuthStore from '../../store/authStore';
 
-const Search = ({ videos }: { videos: YTVideo[] }) => {
+const Search = ({ videos }: { videos: Video[] }) => {
   return (
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
-        videos.map((video: YTVideo) => (
-          <VideoCard post={video} key={video.id.videoId} />
+        videos.map((video: Video) => (
+          <VideoCard post={video} key={video._id} />
         ))
       ) : (
         <NoResults text={'No Videos'} />
@@ -32,9 +34,24 @@ export const getServerSideProps = async ({
 } : { 
   params: { searchTerm: string } 
 }) => {
-  const data: YTVideo[] = [];
+  const data: Video[] = [];
   // const res = await fetch(`${YOUTUBE_URL}&q=${searchTerm}`).then(res => res.json());
-  // res.items.map((vid: YTVideo) => {data.push(vid); console.log(vid)});
+  // await Promise.all(res.items.map(async (video: YTVideo) => {
+  //   const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
+
+  //   if(videoQuery.length > 0){
+  //     data.push(videoQuery[0]);
+  //   } else {
+  //     const newVideo: Video = {
+  //       _id: video.id.videoId,
+  //       caption: video.snippet.title,
+  //       video: video.id.videoId,
+  //       comments: [],
+  //       likes: []
+  //     }
+  //     data.push(newVideo);
+  //   }
+  // }));
 
   return {
     props: {

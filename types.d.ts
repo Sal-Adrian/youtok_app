@@ -70,11 +70,11 @@ export interface YTVideo {
     }
     title: string;
   }
-  likes: {
-    postedBy: {
-      _id: string;
-      image: string;
-      userName: string;
-    };
-  }[];
+  // likes: {
+  //   postedBy: {
+  //     _id: string;
+  //     image: string;
+  //     userName: string;
+  //   };
+  // }[];
 }

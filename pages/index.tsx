@@ -5,20 +5,22 @@ import { Video, YTVideo } from '../types';
 import VideoCard from '../components/VideoCard';
 import NoResults from '../components/NoResults';
 import { YOUTUBE_URL } from '../utils';
+import { client } from '../utils/client';
+import { postDetailQuery } from '../utils/queries';
 
 
 interface IProps {
-  videos: YTVideo[]
+  videos: Video[]
 }
 
 const Home = ({ videos }: IProps) => {
   // const [isLoading, setIsLoading] = useState(true);
-
+  console.log(videos)
   return (
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
-        videos.map((video: YTVideo) => (
-          <VideoCard post={video} key={video.id.videoId} />
+        videos.map((video: Video) => (
+          <VideoCard post={video} key={video._id} />
         ))
       ) : (
         <NoResults text={'No Videos'} />
@@ -32,43 +34,35 @@ export default Home;
 export const getServerSideProps = async () => {
   // const { data } = await axios.get('http://localhost:3000/api/post');
 
-  const data: YTVideo[] = [];
+  const data: Video[] = [];
   // const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
-  // res.items.map((vid: YTVideo) => {data.push(vid); console.log(vid)});
+  // await Promise.all(res.items.map(async (video: YTVideo) => {
+  //   const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
+  //   console.log("sjdbksjdfnjskdfnskd")
+
+  //   if(videoQuery.length > 0){
+  //     console.log("1")
+  //     console.log(videoQuery[0])
+  //     data.push(videoQuery[0]);
+  //   } else {
+  //     const newVideo: Video = {
+  //       _id: video.id.videoId,
+  //       caption: video.snippet.title,
+  //       video: video.id.videoId,
+  //       comments: [],
+  //       likes: []
+  //     }
+  //     console.log("2")
+  //     console.log(newVideo)
+  //     data.push(newVideo);
+  //   }
+  // }));
   
   data.push({
-    etag: 'string',
-    id: {
-      kind: 'string;',
-      videoId: 'NPtGkmkq1P0',
-    },
-    kind: 'string;',
-    snippet: {
-      channelId: 'string;',
-      channelTitle: 'UTS',
-      description: 'string;',
-      liveBroadcastContent: 'string;',
-      publishTime: 'string;',
-      publishedAt: 'string;',
-      thumbnails: {
-        default: {
-          height: 100,
-          url: 'string;',
-          width: 100,
-        },
-        high: {
-          height: 100,
-          url: 'string;',
-          width: 100,
-        },
-        medium: {
-          height: 100,
-          url: 'string;',
-          width: 100,
-        },
-      },
-      title: 'Hold Your Horses',
-    },
+    _id: 'NPtGkmkq1P0',
+    caption: 'Hold Your Horses',
+    video: 'NPtGkmkq1P0',
+    comments: [],
     likes: []
   });
 
