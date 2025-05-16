@@ -33,8 +33,8 @@ export const getServerSideProps = async ({
   params: { searchTerm: string } 
 }) => {
   const data: YTVideo[] = [];
-  const res = await fetch(`${YOUTUBE_URL}&q=${searchTerm}`).then(res => res.json());
-  res.items.map((vid: YTVideo) => {data.push(vid); console.log(vid)});
+  // const res = await fetch(`${YOUTUBE_URL}&q=${searchTerm}`).then(res => res.json());
+  // res.items.map((vid: YTVideo) => {data.push(vid); console.log(vid)});
 
   return {
     props: {
