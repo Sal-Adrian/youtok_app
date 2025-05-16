@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import axios from 'axios';
+// import { useState } from 'react';
+// import axios from 'axios';
 
 import { Video, YTVideo } from '../types';
 import VideoCard from '../components/VideoCard';
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Home = ({ videos }: IProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="flex flex-col gap-10 videos h-full">
