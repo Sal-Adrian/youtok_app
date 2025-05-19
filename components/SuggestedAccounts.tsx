@@ -29,7 +29,7 @@ const SuggestedAccounts = () => {
                     height={34}
                     className="rounded-full"
                     alt="user profile"
-                    layout="responsive"
+                    // layout="responsive"
                   />
                 </div>
                 <div className="hidden xl:block">

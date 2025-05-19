@@ -43,7 +43,7 @@ const Profile = ({ data }: IProps) => {
             height={120}
             className="rounded-full"
             alt="user profile"
-            layout="responsive"
+            // layout="responsive"
           />
         </div>
         <div className="flex flex-col justify-center">
