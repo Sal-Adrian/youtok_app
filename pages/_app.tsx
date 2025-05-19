@@ -1,5 +1,6 @@
 
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -18,6 +19,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}`}>
+      <Head>
+        <title>YouTok</title>
+        <link rel="icon" href="/icon.ico" />
+      </Head>
       <Navbar /> 
       <div className="flex gap-6 md:gap-20">
         <div className="h-[84vh] overflow-hidden xl:hover:overflow-auto">
