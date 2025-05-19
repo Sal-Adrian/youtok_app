@@ -19,7 +19,7 @@ const Sidebar = () => {
   const { userProfile }: any = useAuthStore();
 
   const normalLink = `flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start 
-  cursor-pointer font-semibold text-[#F51997] rounded`;
+  cursor-pointer font-semibold text-[#00B0F0] rounded`;
 
   return (
     <div>
@@ -61,7 +61,7 @@ const Sidebar = () => {
                   <GoogleLogin 
                   clientId="" 
                   render={(renderProps) => (
-                    <button  className="cursor-pointer big-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#F51997]" 
+                    <button  className="cursor-pointer big-white text-lg text-[#00B0F0] border-[1px] border-[#00B0F0] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#00B0F0]" 
                     onClick={renderProps.onClick} disabled={renderProps.disabled}>
                       Log in
                     </button>

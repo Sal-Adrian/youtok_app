@@ -25,7 +25,7 @@ const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
     <div className="flex gap-6">
       <div className="mt-2 flex flex-wrap justify-center items-center">
         {alreadyLiked ? (
-          <div className="bg-primary rounded-full p-2 md:p-4 text-[#F51997] cursor-pointer" onClick={handleDislike}>
+          <div className="bg-primary rounded-full p-2 md:p-4 text-[#00B0F0] cursor-pointer" onClick={handleDislike}>
             <MdFavorite className="text-lg md:text-2xl" />
           </div>
         ) : (
