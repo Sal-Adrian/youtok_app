@@ -15,7 +15,7 @@ interface IProps {
 
 const Home = ({ videos }: IProps) => {
   // const [isLoading, setIsLoading] = useState(true);
-  console.log(videos)
+  
   return (
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
@@ -35,28 +35,23 @@ export const getServerSideProps = async () => {
   // const { data } = await axios.get('http://localhost:3000/api/post');
 
   const data: Video[] = [];
-  // const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
-  // await Promise.all(res.items.map(async (video: YTVideo) => {
-  //   const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
-  //   console.log("sjdbksjdfnjskdfnskd")
+  const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
+  await Promise.all(res.items.map(async (video: YTVideo) => {
+    const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
 
-  //   if(videoQuery.length > 0){
-  //     console.log("1")
-  //     console.log(videoQuery[0])
-  //     data.push(videoQuery[0]);
-  //   } else {
-  //     const newVideo: Video = {
-  //       _id: video.id.videoId,
-  //       caption: video.snippet.title,
-  //       video: video.id.videoId,
-  //       comments: [],
-  //       likes: []
-  //     }
-  //     console.log("2")
-  //     console.log(newVideo)
-  //     data.push(newVideo);
-  //   }
-  // }));
+    if(videoQuery.length > 0){
+      data.push(videoQuery[0]);
+    } else {
+      const newVideo: Video = {
+        _id: video.id.videoId,
+        caption: video.snippet.title,
+        video: video.id.videoId,
+        comments: [],
+        likes: []
+      }
+      data.push(newVideo);
+    }
+  }));
   
   data.push({
     _id: 'NPtGkmkq1P0',

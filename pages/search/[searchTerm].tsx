@@ -35,23 +35,24 @@ export const getServerSideProps = async ({
   params: { searchTerm: string } 
 }) => {
   const data: Video[] = [];
-  // const res = await fetch(`${YOUTUBE_URL}&q=${searchTerm}`).then(res => res.json());
-  // await Promise.all(res.items.map(async (video: YTVideo) => {
-  //   const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
+  const res = await fetch(`${YOUTUBE_URL}&q=${searchTerm}`).then(res => res.json());
 
-  //   if(videoQuery.length > 0){
-  //     data.push(videoQuery[0]);
-  //   } else {
-  //     const newVideo: Video = {
-  //       _id: video.id.videoId,
-  //       caption: video.snippet.title,
-  //       video: video.id.videoId,
-  //       comments: [],
-  //       likes: []
-  //     }
-  //     data.push(newVideo);
-  //   }
-  // }));
+  await Promise.all(res.items.map(async (video: YTVideo) => {
+    const videoQuery = await client.fetch(postDetailQuery(video.id.videoId));
+ 
+    if(videoQuery.length > 0){
+      data.push(videoQuery[0]);
+    } else {
+      const newVideo: Video = {
+        _id: video.id.videoId,
+        caption: video.snippet.title,
+        video: video.id.videoId,
+        comments: [],
+        likes: []
+      }
+      data.push(newVideo);
+    }
+  }));
 
   return {
     props: {

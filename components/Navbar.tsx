@@ -21,7 +21,6 @@ const Navbar = () => {
     e.preventDefault();
     
     if(searchValue) {
-      console.log(searchValue)
       router.push(`/search/${searchValue}`);
     }
   };
