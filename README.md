@@ -5,7 +5,7 @@ I'm fascinated by random Youtube videos with no views, so I made this web app to
 
 - Play and search for random Youtube vidoes with no views.
 
-![Gif of search functionality](src/play_search.gif)
+https://github.com/user-attachments/assets/626f9b79-f9d0-4041-8a9e-1b99203abf0d
 
 - Save/Like videos for later.
 - Add notes/comments on any video (stored within the app, not on Youtube). 
