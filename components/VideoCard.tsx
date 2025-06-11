@@ -51,18 +51,18 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         src={`https://www.youtube.com/embed/${postData.video}`}>
       </iframe>
 
-      <div className="flex items-center justify-between lg:w-[600px] w-[300px]">
-        {userProfile && (
+      {userProfile && (
+        <div className="flex items-center justify-between lg:w-[600px] w-[300px]">
           <LikeButton 
             likes={postData.likes}
             handleLike={() => {handleLike(true)}}
             handleDislike={() => {handleLike(false)}}
           />
-        )}
-        <div className="text-lg md:text-2xl mt-2 p-2 md:p-4 flex-wrap">
-          <FaComments className="cursor-pointer" onClick={handleComment}/>
+          <div className="text-lg md:text-2xl mt-2 p-2 md:p-4 flex-wrap">
+            <FaComments className="cursor-pointer" onClick={handleComment}/>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

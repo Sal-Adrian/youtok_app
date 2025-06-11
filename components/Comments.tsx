@@ -79,7 +79,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
               placeholder="Add comment..."
               className="bg-primary px-6 py-4 text-md font-medium border-2 w-[250px] md:w-[700px] lg:w-[300px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg focus:bg-white"
             />
-            <button className="text-md text-gray-400" onClick={addComment}>
+            <button className="text-md text-gray-400 cursor-pointer" onClick={addComment}>
               {isPostingComment ? "Commenting..." : "Comment"}
             </button>
           </form>
