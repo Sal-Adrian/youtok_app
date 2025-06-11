@@ -7,7 +7,12 @@ export const YOUTUBE_URL = process.env.NEXT_PUBLIC_YOUTUBE_URL;
 export const SINGLE_URL = process.env.NEXT_PUBLIC_SINGLE_YOUTUBE_URL;
 
 export const createOrGetUser = async (response: any, addUser: any) => {
-  const decoded: { name: string, picture: string, sub: string } = jwtDecode(response.credential);
+  let decoded: { name: string, picture: string, sub: string };
+  if(response == 'Guest') {
+    decoded = {name: 'Barry Bearstain', picture: 'https://static3.depositphotos.com/1000608/109/i/950/depositphotos_1095458-stock-photo-brown-bear.jpg', sub: '44b91ffe-36a9-4ad3-88e1-b29c1e70acfc'}
+  } else {
+    decoded = jwtDecode(response.credential);
+  }
 
   const { name, picture, sub } = decoded;
   

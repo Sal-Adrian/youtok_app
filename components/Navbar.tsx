@@ -85,10 +85,16 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <GoogleLogin 
-            onSuccess={(response) => createOrGetUser(response, addUser)}
-            onError={() => {console.log("Error")}}
-          />
+          <div className="flex gap-3">
+            <button className="border-2 px-2 md:px-4 text-md font semibold flex items-center gap-2 cursor-pointer rounded-md" onClick={()=>createOrGetUser('Guest', addUser)}>
+              <span className="hidden md:block">Log In As Guest</span>
+              <span className="md:hidden ">Guest</span>
+            </button>
+            <GoogleLogin 
+              onSuccess={(response) => createOrGetUser(response, addUser)}
+              onError={() => {console.log("Error")}}
+            />
+          </div>
         )}
       </div>
     </div>
