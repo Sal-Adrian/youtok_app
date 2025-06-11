@@ -5,8 +5,6 @@ import { client } from '../../../utils/client';
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
   if(req.method === 'GET') {
-    // console.log("-------------------------------------------------------------")
-    // console.log(req.query)
     const { searchTerm } = req.query;
 
     const videosQuery = searchPostsQuery(`${searchTerm}`);

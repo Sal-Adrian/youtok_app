@@ -1,6 +1,3 @@
-// import { useState } from 'react';
-// import axios from 'axios';
-
 import { Video, YTVideo } from '../types';
 import VideoCard from '../components/VideoCard';
 import NoResults from '../components/NoResults';
@@ -14,8 +11,6 @@ interface IProps {
 }
 
 const Home = ({ videos }: IProps) => {
-  // const [isLoading, setIsLoading] = useState(true);
-  
   return (
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
@@ -32,8 +27,6 @@ const Home = ({ videos }: IProps) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  // const { data } = await axios.get('http://localhost:3000/api/post');
-
   const data: Video[] = [];
   const res = await fetch(`${YOUTUBE_URL}`).then(res => res.json());
   await Promise.all(res.items.map(async (video: YTVideo) => {

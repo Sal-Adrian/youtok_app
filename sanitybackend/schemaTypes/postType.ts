@@ -30,23 +30,5 @@ export const postType = defineType({
       type: 'array',
       of: [{ type: 'comment' }],
     }),
-    // defineField({
-    //   name: 'video',
-    //   type: 'file',
-    //   validation: (rule) => rule.required(),
-    // }),
-    // defineField({
-    //   name: 'userId',
-    //   type: 'string',
-    //   validation: (rule) => rule.required(),
-    // }),
-    // defineField({
-    //   name: 'postedBy',
-    //   type: 'postedBy',
-    // }),
-    // defineField({
-    //   name: 'topic',
-    //   type: 'string',
-    // }),
   ],
 })

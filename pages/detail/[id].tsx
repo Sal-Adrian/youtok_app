@@ -92,69 +92,12 @@ const Detail = ({ postDetails }: IProps) => {
             <MdOutlineCancel className="text-white text-[35px]" />
           </p>
         </div>
-            <iframe className="lg:w-[800px] lg:h-[452px] h-[169px] w-[300px]"
-              src={`https://www.youtube.com/embed/${postDetails.video}`}>
-            </iframe>
-        {/* <div className="relative">
-          <div className="lg:w-[800px] lg:h-[452px] h-[169px] w-[300px]">
-            <video 
-              ref={videoRef}
-              loop
-              onClick={onVideoClick}
-              src={post.video.asset.url}
-              className="h-full cursor-pointer"
-            >
-            </video>
-          </div>
-          <div className="absolute top-[45%] left-[45%] cursor-pointer">
-            {!playing && (
-              <button>
-                <BsFillPlayFill onClick={onVideoClick} className="text-white text-6xl lg:text-8xl"/>
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
-          {isVideoMuted ? (
-            <button onClick={() => {setIsVideoMuted(false)}}>
-              <HiVolumeOff className="text-white text-2xl lg:text-4xl"/>
-            </button>
-          ) : (
-            <button onClick={() => {setIsVideoMuted(true)}}>
-              <HiVolumeUp className="text-white text-2xl lg:text-4xl"/>
-            </button>
-          )}
-        </div> */}
+        <iframe className="lg:w-[800px] lg:h-[452px] h-[169px] w-[300px]"
+          src={`https://www.youtube.com/embed/${postDetails.video}`}>
+        </iframe>
       </div>
       <div className="relative w-[1000px] md-[900px] lg:w-[500px]">
         <div className="lg:mt-2 mt-10">
-          {/* <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-            <div className="ml-4 md:w-20 md:h-20 w-16 h-16">
-              <Link href={`/profile/${post.postedBy._id}`}>
-                <>
-                  <Image 
-                    width={62} 
-                    height={62} 
-                    className="rounded-full" 
-                    src={post.postedBy.image} 
-                    alt="profile photo"
-                    layout="responsive"
-                  />
-                </>
-              </Link>
-            </div>
-            <div>
-              <Link href={`/profile/${post.postedBy._id}`}>
-                <div className="mt-3 flex flex-col gap-2">
-                  <p className="flex gap-2 items-center md:text-md font-bold text-primary">
-                    {post.postedBy.userName} {` `}
-                    <GoVerified className="text-blue-400 text-md"/>
-                  </p>
-                  <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">{post.postedBy.userName}</p>
-                </div>
-              </Link>
-            </div>
-          </div> */}
           <p className="px-10 text-lg text-gray-600 mt-10">{post.caption}</p>
           <div className="p-3 px-10">
             {userProfile && (

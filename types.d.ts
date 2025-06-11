@@ -16,18 +16,6 @@ export interface Video {
       userName: string;
     };
   }[];
-  // postedBy: {
-  //   _id: string;
-  //   image: string;
-  //   userName: string;
-  // };
-  // video: {
-  //   asset: {
-  //     _id: string;
-  //     url: string;
-  //   };
-  // };
-  // userId: string;
 }
 
 export interface IUser {
@@ -70,11 +58,4 @@ export interface YTVideo {
     }
     title: string;
   }
-  // likes: {
-  //   postedBy: {
-  //     _id: string;
-  //     image: string;
-  //     userName: string;
-  //   };
-  // }[];
 }
