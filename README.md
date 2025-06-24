@@ -1,5 +1,7 @@
 # YouTok
 
+### Deprecated: This project was using a free trial (Sanity) for a backend. That free trail has expired.
+
 I'm fascinated by random Youtube videos with no views, so I made this web app to view, write notes/comments, and store these videos onto a Sanity database. It's pretty much a Youtube/Tiktok clone, except for this niche use case.
 
 ## Features
